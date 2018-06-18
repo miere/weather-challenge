@@ -10,6 +10,7 @@ plane in which the distance between points of the same _distance unit_
 would be easily calculated using the Euclidean Distance formula.
 - The difference between two ordered coordinate points represents a
 valid _traveled distance_.
+- A given location A(x,y) converted to the _distance unit_ of other observatory still points to the same place in the world.
 - The timestamp isn't validated, although it is used to sort the dataset.
 - The generated mock data wasn't shuffled or created with bad lines, although
 the program is totally capable to deal with unordered or bad written lines.
