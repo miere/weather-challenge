@@ -1,0 +1,31 @@
+modelVersion: 4.0.0
+
+parent:
+  groupId: io.skullabs.boilerplates
+  artifactId: java-8
+  version: 1.0.0
+
+artifactId: cammy-challenge
+
+dependencies:
+- { groupId: org.mockito, artifactId: mockito-core }
+- { groupId: com.google.code.externalsortinginjava, artifactId: externalsortinginjava, version: 0.2.4 }
+- { groupId: ch.qos.logback, artifactId: logback-classic, version: 1.2.3 }
+- { groupId: com.beust, artifactId: jcommander, version: 1.72 }
+
+build:
+  plugins:
+    # generating a single jar
+    - groupId: org.apache.maven.plugins
+      artifactId: maven-shade-plugin
+      version: 3.1.1
+      executions:
+       - { id: "generate-jar", phase: "verify", goals: [ "shade" ] }
+      configuration:
+        createDependencyReducedPom: false
+    # making the jar runnable
+    - groupId: org.apache.maven.plugins
+      artifactId: maven-jar-plugin
+      configuration:
+        archive:
+          manifest: { mainClass: "cammy.weather.Application" }
